@@ -1,6 +1,51 @@
 #include<stdio.h>
-//int p,q;
-int lsearch(int a[10][10],int);
+
+#define MAXM 10
+#define MAXN 10
+struct Two_D_array {
+   int m,n;
+   int a[MAXM][MAXN];
+};
+
+int lsearch(int m,int n,int a[m][n],int key);
+
+
+struct Two_D_array inputarray()
+{
+     struct Two_D_array t;
+     printf("Enter m");
+     scanf("%d",&t.m);
+     printf("Enter n");
+     scanf("%d",&t.n);
+     for( int i=0; i<t.m;i++) {
+        for(int j=0; j<t.n;j++) {
+           print...
+           scanf ...
+        }
+     }
+     return t;
+}
+
+int lsearch( struct Two_D_array t, int key) {
+ 
+    return pos;
+}
+
+
+int main()
+{
+ struct Two_D_array t;
+ t = inputarray();
+ int key;
+ /* write get key */
+ int pos = lsearch(t,key);
+ ...
+}
+ 
+ return 0;
+}
+
+
 void main()
 {
  int a[10][10],i,j,n,m,key,position;
