@@ -386,6 +386,121 @@ rt
 >>> s.display()
 rt
 ---------------------------------------------------------------------------------------------------
+ITERATORS AND ITERABLE
+
+what is iterable?
+An object is iterable if it has only "__iter__" method and not "__next__" method
+
+what is iterator?
+An object is iterator if it has both "__iter__" method and "__next__" method
+
+let's take an example to understand:
+EXAMPLE 1:
+>>>l=[1,2,3,4]
+>>> dir(l)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', 
+'__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert',
+'pop', 'remove', 'reverse', 'sort']
+
+from the above example we can see that the list l is iterable because it has only __iter__ method and not __next__ method
+
+we can also perform another experiment to check if l is iterator or iterable
+
+>>>nums=l.__iter__
+>>>print(nums)
+<method-wrapper '__iter__' of list object at 0x030ED3F0>
+
+this can be equivalently written as
+
+>>>nums=iter(l)
+>>>print(nums)
+<list_iterator object at 0x034FE870>
+
+As we can see the object l does not have __next__ so it is iterable.
+when the __iter__method is called it holds the state of the object and to point to the next state so that we can iterate over
+the object the __iter__ method calls __next__method.Hence we can say the __iter__ is the iterator. 
+To understand this clearly lets take an example:
+
+
+>>>dir(iter(l))
+['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__',
+'__length_hint__', '__lt__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__']
+
+here we can see there is __next__.
+so it is an iterator
+
+Now let's try writing a class that has __iter__ and __next__ method
+
+class myrange:
+	def __init__(self,start,end):
+		self.value=start
+		self.end=end
+	def __iter__(self):
+		return self
+	def __next__(self):
+		if self.value>=self.end:
+			raise StopIteration
+		current=self.value
+		self.value=self.value+1
+		return current
+
+
+>>>x=myrange(1,10)
+>>>print(x.__next__)
+<bound method myrange.__next__ of <__main__.myrange object at 0x034FE850>>
+
+which can be equivalently written as
+print(x)
+<__main__.myrange object at 0x034FE850>
+
+but 
+when we write it as:
+>>> x=myrange(1,10)
+>>> for i in x:
+	print(i)
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+here we get the output because for loop invokes the __iter__ method in the object x 
+
+---------------------------------------------------------------------------------------------------
+
+We can use Generators to create iterators
+
+def my_range(start,end):
+	current=start
+	while current<end:
+		yield current
+		current=current+1
+
+>>> x=my_range(1,10)
+>>> for i in x:
+	print(i)
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+yield is used to hold the present value of the object.
+------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
