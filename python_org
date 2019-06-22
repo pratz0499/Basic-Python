@@ -1,0 +1,391 @@
+if __name__=="__main__":
+    print("__name__")
+
+   # File1.py 
+print "File1 __name__ = %s" %__name__ 
+  
+if __name__ == "__main__": 
+    print "File1 is being run directly"
+else: 
+    print "File1 is being imported"
+    
+#when we run a script __name__ is set to __main__
+#when we import a script __name__ is set to the name of the script.
+
+These imports use leading dots to indicate the current and parent packages involved in the relative import.
+from . import echo
+from .. import formats
+from ..filters import equalizer
+
+
+Its Name (which means name, an unique identifier) + Space(which talks something related to scope). Here, a name might be of any Python method or variable and space depends upon the location from where is trying to access a variable or a method.
+-------------------------------------------------------------------------------
+NON LOCAL VARAIBLES
+EXAMPLE 1:
+def yo():
+    x="hello"
+    def yo1():
+        x="lisa"
+    yo1()
+    return x
+
+OUTPUT:
+ >>>yo()
+'hello'
+ 
+   
+"""In the above example we have x globally declared in the yo() where x is assigned to "hello"
+and we have used the same variable x inside the sub-function yo1() where x is assigned to"lisa"
+here when we call the yo() we get output as "hello" and not as "lisa".This is because x variable inside the yo1() is local to that function"""
+
+EXAMPLE 2:    
+def yo():
+    x="hello"
+    def yo1():
+        nonlocal x
+        x="lisa"
+    yo1()
+    return x
+
+OUTPUT:
+    >>>yo()
+    "lisa"
+    
+"""In this example we have used the nonlocal keyword to make the x variable inside yo1() nonlocal to yo()
+hence x which was initailly assigned to "hello" is now reassigned to "lisa"
+
+--------------------------------------------------------------------------------------
+
+def yo():
+	x="John"
+	def yo1:
+		
+SyntaxError: invalid syntax
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+	return x
+    
+    >>> print(yo())
+John
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+	yo1()
+	return x
+
+>>> print(yo())
+John
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+	yo1()
+	yo2()
+	yo3()
+	return x
+    
+  >>> print(yo())
+Traceback (most recent call last):
+  File "<pyshell#39>", line 1, in <module>
+    print(yo())
+  File "<pyshell#38>", line 11, in yo
+    yo2()
+NameError: name 'yo2' is not defined
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+	yo1()
+	yo2()
+	return x
+    
+    >>> print(yo())
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    print(yo())
+  File "<pyshell#41>", line 11, in yo
+    yo2()
+NameError: name 'yo2' is not defined
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+	yo1()
+	yo3()
+	return x
+
+
+>>> print(yo())
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    print(yo())
+  File "<pyshell#44>", line 11, in yo
+    yo3()
+NameError: name 'yo3' is not defined
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+		def yo2():
+			nonlocal x
+			x="Rajat"
+			def yo3():
+				x="Ranjani"
+			yo3()
+		yo2()
+	yo1()
+	return x
+
+>>> print(yo())
+John
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+	def yo2():
+		nonlocal x
+		x="Rajat"
+		def yo3():
+			x="Ranjani"
+		yo3()
+	yo2()
+	yo1()
+	return x
+    
+    >>> print(yo())
+Rajat
+>>> def yo():
+	x="John"
+	def yo1():
+		x="Pratz"
+	def yo2():
+		nonlocal x
+		x="Rajat"
+		def yo3():
+			nonlocal x
+			x="Ranjani"
+		yo3()
+	yo2()
+	yo1()
+	return x
+    
+    >>> print(yo())
+Ranjani
+>>> def yo():
+	x="John"
+	def yo1():
+		nonlocal x
+		x="Pratz"
+	def yo2():
+		nonlocal x
+		x="Rajat"
+		def yo3():
+			nonlocal x
+			x="Ranjani"
+		yo3()
+	yo2()
+	yo1()
+	return x
+
+>>> print(yo())
+Pratz
+----------------------------------------------------------------------------------------------
+>>> def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        global spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+
+>>> print(scope_test())
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+None
+>>> print("In global scope:", spam)
+In global scope: global spam
+>>> def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        nonlocal spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+
+>> print(scope_test())
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: global spam
+None
+>>> print("In global scope:", spam)
+In global scope: global spam
+>>> def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        global spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        nonlocal spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+    
+>>> print(scope_test())
+After local assignment: test spam
+After nonlocal assignment: test spam
+After global assignment: global spam
+None
+>>> print("In global scope:", spam)
+In global scope: nonlocal spam
+
+-----------------------------------------------------------------------------------------
+Question: Can we write a class inside a function??
+YES
+EXAMPLE:
+
+def a():
+	class b:
+		def c(self):
+			print("In c")
+	z=b()
+	z.c()
+
+OUTPUT:
+>>> a()
+In c
+------------------------------------------------------------------------------------------
+Private attributes:-
+
+class friends:
+	def __init__(self,f1,f2):
+		self.__first=f1
+		self.__second=f2
+	def display(self):
+		print(self._friends__first+self._friends__second)
+
+	
+class frands(friends):
+	def display(self):
+		print(self._friends__first+self._friends__second)
+
+Output:-
+>>> s=friends("r",'t')
+>>> s.display()
+rt
+>>> s=frands("r",'t')
+>>> s.display()
+rt
+
+---------------------------------------------------------------------------------------------
+Protected attributes:-
+
+class friends:
+	def __init__(self,f1,f2):
+		self._first=f1
+		self._second=f2
+	def display(self):
+		print(self._first+self._second)
+
+	
+class frands(friends):
+	def display(self):
+		print(self._first+self._second)
+		
+Output:-
+>>> s=friends("r",'t')
+>>> s.display()
+rt
+>>> s=frands("r",'t')
+>>> s.display()
+rt
+-------------------------------------------------------------------------------------------------
+Public attributes:-
+
+class friends:
+	def __init__(self,f1,f2):
+		self.first=f1
+		self.second=f2
+	def display(self):
+		print(self.first+self.second)
+
+	
+class frands(friends):
+	def display(self):
+		print(self.first+self.second)
+		
+Output:-
+>>> s=friends("r",'t')
+>>> s.display()
+rt
+>>> s=frands("r",'t')
+>>> s.display()
+rt
+---------------------------------------------------------------------------------------------------
+
+
+
