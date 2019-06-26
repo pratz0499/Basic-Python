@@ -1,0 +1,24 @@
+import cmath
+
+def inputt():
+    a=int(input())
+    b=int(input())
+    c=int(input())
+    t=a,b,c
+    return t
+
+def compute(a,b,c):
+    d=(b*b)-(4*a*c)
+    x=(2*a)
+    r1=-b+cmath.sqrt((b*b)-(4*a*c))
+    r2=-b-cmath.sqrt((b*b)-(4*a*c))
+    z=r1,r2
+    return z
+
+def display(z):
+    print("The roots are: ",z)
+
+
+a=inputt()
+b=compute(*a)
+c=display(b)
