@@ -1,0 +1,30 @@
+def inputt():
+    s=input("server=")
+    d=input("dbname=")
+    u=input("usr=")
+    p=input("passs=")
+    t=("'server=%s;dbname=%s;user=%s;passs=%s'"%(s,d,u,p))
+    return t
+
+def cstodic(t):
+    dic={}
+    for i in t.split(";"):
+        keys,values=i.split("=")
+        dic[keys]=values
+    return dic
+
+def dictocs(dic):
+    cs=""
+    s="="
+    for i in dic.split(","):
+        a,b=i.split(":")
+        s=s.join(a,b)
+    return s
+        
+
+a=inputt()
+print(a)
+b=cstodic(a)
+print(b)
+c=dictocs(b)
+print(c)
