@@ -1,0 +1,21 @@
+def my_range(start,end):
+	current=start
+	while current<end:
+		yield current
+		current=current+1
+
+		
+def fibo(n):
+	a,b=0,1
+	while a<n:
+		print(a)
+		a,b=b,a+b
+	current=n
+	while current<n:
+		yield current
+		current=current+1
+
+		
+z=fibo(20)
+for i in z:
+	print(i)
