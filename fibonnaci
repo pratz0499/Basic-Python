@@ -19,3 +19,23 @@ def fibo(n):
 z=fibo(20)
 for i in z:
 	print(i)
+-----------------------------------------------------------------------------------------------------------------------
+class fibo:
+	def __init__(self,n):
+		self.n=n
+	def fibonacci(self):
+		self.a=0
+		self.b=1
+		while self.a<self.n:
+			yield self.a
+			self.a,self.b=self.b,self.a+self.b
+		self.current=self.n
+		while self.current<self.n:
+                    yield self.current
+                    self.current=self.current+1
+		    
+		    
+
+>>> z=fibo(5)
+>>> for i in z.fibonacci():
+	print(i)
