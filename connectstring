@@ -14,12 +14,9 @@ def cstodic(t):
     return dic
 
 def dictocs(dic):
-    cs=""
-    s="="
-    for i in dic.split(","):
-        a,b=i.split(":")
-        s=s.join(a,b)
-    return s
+    list=[a+"="+b+";" for a,b in dic.items()]
+    print (list)
+    
         
 
 a=inputt()
@@ -28,3 +25,5 @@ b=cstodic(a)
 print(b)
 c=dictocs(b)
 print(c)
+
+
