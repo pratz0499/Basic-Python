@@ -1,0 +1,17 @@
+class my_range:
+	def __init__(self,start,end):
+		self.value=start
+		self.end=end
+	def __iter__(self):
+		return self
+	def __next__(self):
+		if self.value>=self.end:
+			raise StopIteration
+		current=self.value
+		self.value=self.value+1
+		return current
+    
+    
+>>> z=my_range(9,111)
+>>> for i in z:
+	      print(i)
