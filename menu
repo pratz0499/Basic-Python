@@ -1,11 +1,19 @@
 class menu:
-	def __init__(self):
-		self.l=[]
-	def additem(self,name,cost):
-		self.n=name
-		self.c=cost
-		self.x=self.n,self.c
-		self.l.append(self.x)
-	def show(self):
-		for i in self.l:
-			print(i)
+    def __init__(self):
+        self.l=[]
+
+    def additem(self,name,cost):
+        self.n=name
+        self.c=cost
+        self.x=self.n,self.c
+        self.l.append(self.x)
+    def show(self):
+        for i in self.l:
+            print(i)
+    def showitem(self,n):
+        for i in self.l.split(","):
+            for nm,cs in self.l.split(","):
+                if(n==nm):
+                    print(cs)
+
+
