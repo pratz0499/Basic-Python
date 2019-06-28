@@ -1,20 +1,14 @@
-
 class fibo:
-	def __init__(self,n):
-		self.n=n
-	def fibonacci(self):
-		self.a=0
-		self.b=1
-		while self.a<self.n:
-			yield self.a
-			self.a,self.b=self.b,self.a+self.b
-		self.current=self.n
-		while self.current<self.n:
-                    yield self.current
-                    self.current=self.current+1
-		    
-		    
+    def __init__(self,n):
+        self.n=n
+    def fibonnaci(self):
+        if self.n<=1:
+            return n
+        else:
+            return(fibonnaci(n-1)+fibonnaci(n-2))
 
->>> z=fibo(5)
->>> for i in z.fibonacci():
-	print(i)
+
+
+z=fibo(10)
+for i in z:
+    print(fibo(i))
