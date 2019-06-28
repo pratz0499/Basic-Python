@@ -6,7 +6,8 @@ class menu:
 		self.value=cost
 		self.l.update({self.key:self.value})
 	def show(self):
-		print(self.l)
+		for a,b in (self.l.items()):
+			print(a,b)
 	def showitem(self,item):
 		price=self.l.get(item)
 		print(price)
