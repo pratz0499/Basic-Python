@@ -1,13 +1,11 @@
 class menu:
 	def __init__(self):
-		self.l={}
+		self.menuitems={}
 	def additems(self,name,cost):
-		self.key=name
-		self.value=cost
-		self.l.update({self.key:self.value})
+		self.menuitems[name]=cost
 	def show(self):
-		for a,b in (self.l.items()):
+		for a,b in (self.menuitems.items()):
 			print(a,b)
 	def showitem(self,item):
-		price=self.l.get(item)
+		price=self.menuitems.get(item)
 		print(price)
