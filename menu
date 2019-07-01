@@ -1,17 +1,15 @@
-class menu:
-    def __init__(self):
-        self.menu_items={}
-    def additems(self,item,cost):
-        self.menu_items[item]=cost
-    def show(self):
-        for k,v in self.menu_items.items():
-            print(k,'=',v)
-    def show_items(self,other):
-        price=self.menu_items.get(other)
-        print(price)
-    def __add__(self,item1,cost1):
-         self.menu_items+=self.menu_items.update(self.item1,self.cost1)
-         return menu(self.menu_items)
+	def __init__(self):
+		self.menu_items={}
+	def additems(self,item,cost):
+		self.menu_items[item]=cost
+	def show(self):
+		for k,v in self.menu_items.items():
+		    print(k,'=',v)
+	def show_items(self,items):
+		price=self.menu_items.get(items)
+		print(price)
+	def __add__(self,other1,other2):
+		return menu(list(other1)+list(other2))
         
 
 m=menu()
