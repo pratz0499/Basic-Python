@@ -1,14 +1,14 @@
 class menu:
 	def __init__(self):
-		self.menu_items={}
+		self.menu_item={}
 	def additems(self,item,cost):
-		self.menu_items[item]=cost
+		self.menu_item[item]=cost
 	def show(self):
-		for k,v in self.menu_items.items():
+		for k,v in self.menu_item.items():
 		    print(k,'=',v)
 	def show_items(self,items):
-		price=self.menu_items.get(items)
+		price=self.menu_item.get(items)
 		print(price)
 	def __add__(self,other):
-		self.menu_items[other[0]]=other[1]
+		self.menu_item[other[0]]=other[1]
 		return self
