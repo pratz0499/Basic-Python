@@ -11,4 +11,4 @@
 		print(price)
 	def __add__(self,other):
 		self.menu_items[other[0]]=other[1]
-		return self.menu_items
+		return menu(self.menu_items)
