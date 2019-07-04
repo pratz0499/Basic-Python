@@ -17,18 +17,17 @@ class dictionary:
 		return self
 	def __getitem__(self,index):
 		return self.menu_item[index]
- class menu(dictionary):
-	def additems(self,item,cost):
-		pass
-	def show(self):
-		pass
-	def show_items(self,items):
-		pass
-	def __add__(self,other):
-		pass
-	def __setitem__(self,index,value):
-		pass
-	def __getitem__(self,index):
-		pass
+ 
 
 
+class menu(dictionary):
+	def __init__(self):
+		dictionary.__init__(self)
+		
+		
+		
+		
+>>> m=menu()
+>>> m.additems('idly',20)
+>>> m.show()
+idly = 20
