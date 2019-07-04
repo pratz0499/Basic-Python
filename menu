@@ -15,3 +15,10 @@ class menu:
 	def __setitem__(self,index,value):
 		self.menu_item[index]=value
 		return self
+
+
+
+output:
+>>> m=menu()
+>>> m['biryani']=45
+>>> m.show()
