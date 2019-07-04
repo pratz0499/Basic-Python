@@ -12,3 +12,6 @@ class menu:
 	def __add__(self,other):
 		self.menu_item[other[0]]=other[1]
 		return self
+	def __setitem__(self,index,value):
+		self.menu_item[index]=value
+		return self
