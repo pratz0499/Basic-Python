@@ -19,16 +19,16 @@ class dictionary:
 		return self.menu_item[index]
  class menu(dictionary):
 	def additems(self,item,cost):
-		return True
+		pass
 	def show(self):
-		return True
+		pass
 	def show_items(self,items):
-		return True
+		pass
 	def __add__(self,other):
-		return True
+		pass
 	def __setitem__(self,index,value):
-		return True
+		pass
 	def __getitem__(self,index):
-		return True
+		pass
 
 
