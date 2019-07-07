@@ -1,41 +1,25 @@
-class dict:
-	def __init__(self):
-		self.__dict__={}
-	def additems(self,item,cost):
-		self.__dict__[item]=cost
-	def show(self):
-		for k,v in self.__dict__.items():
-		    print(k,'=',v)
-	def show_items(self,items):
-		price=self.__dict__.get(items)
-		print(price)
-	def __add__(self,other):
-		self.__dict__[other[0]]=other[1]
-		return self
-	def __setitem__(self,index,value):
-		self.__dict__[index]=value
-		return self
-	def __getitem__(self,index):
-		return self.__dict__[index]
-
-
 class menu(dict):
     pass
 
 class order(dict):
-    def __init__(self):
+    def __init__(self, menu1):
         dict.__init__(self)
-        order1=[]
-        
-    def takeorder(self,item):
-        if item in self.__dict__():
-            print("Order already taken")
+        self.menu1=menu1
+    def __setitem__(self,k,v):
+        if k in self.menu1:
+            print('Item already exists')
         else:
-            self.order1.append(item)
-            return order1
+            dict.__setitem__(self,k,v)	
 
+        
+    
+m=menu()
 
-m=order()
-m.additems('idly',20)
-m.additems('dosa',25)
-m.show()
+m['idly'] = 20
+m['vada'] = 20
+o=order(m)
+o['dosa']=40
+o['idly']=10
+#o/p-> item exits in menu
+#m.additems('dosa',25)
+#m.show()
