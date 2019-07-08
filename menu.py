@@ -7,9 +7,11 @@ class order(dict):
         self.menu1=menu1
     def __setitem__(self,k,v):
         if k in self.menu1:
-            print('Item already exists')
+            raise Exception("{} Already Exist".format(k))
+           
         else:
-            dict.__setitem__(self,k,v)	
+            dict.[k]=v
+            	
 
         
     
@@ -19,7 +21,8 @@ m['idly'] = 20
 m['vada'] = 20
 o=order(m)
 o['dosa']=40
-o['idly']=10
+o['upma']=10
+print(o.__dict__)
 #o/p-> item exits in menu
 #m.additems('dosa',25)
 #m.show()
