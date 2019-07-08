@@ -10,7 +10,7 @@ class order(dict):
             raise Exception("{} Already Exist".format(k))
            
         else:
-            dict.[k]=v
+            self.__dict__[k]=v
             	
 
         
