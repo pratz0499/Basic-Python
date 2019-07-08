@@ -10,19 +10,15 @@ class order(dict):
             raise Exception("{} Already Exist".format(k))
            
         else:
-            self.__dict__[k]=v
-            	
-
-        
-    
+            super().__setitem__(k,v)
+           
 m=menu()
-
 m['idly'] = 20
 m['vada'] = 20
 o=order(m)
 o['dosa']=40
 o['upma']=10
-print(o.__dict__)
+print(o)
 #o/p-> item exits in menu
 #m.additems('dosa',25)
 #m.show()

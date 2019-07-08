@@ -5,10 +5,8 @@ class conversion:
         while self.integer<=10:
             a=str(self.integer)
             b=len(a)
-            1=i
-            5=v
-            10=x
             
+
 
 
 
